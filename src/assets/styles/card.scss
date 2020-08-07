@@ -1,0 +1,27 @@
+.feed {
+    // &__cards {
+    //     display: flex;
+    // }
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+    }
+    &__card{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 200px;
+        border-radius: 5px;
+        &__name {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: black;
+            font-weight: 600;
+            
+        }
+    }
+}

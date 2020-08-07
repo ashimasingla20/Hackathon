@@ -1,0 +1,29 @@
+.social {
+    &__top{
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 20px;
+        background: #fff;
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        width: 1220px;
+        margin: 0 auto;
+        background: #fff;
+        &__match {
+            margin-right: 20px;
+        }
+        &__user {
+
+        }
+        &__start {
+            display: flex;
+            justify-content: start;
+        }
+        &__end {
+            display: flex;
+            justify-content: end;
+        }
+    }
+}

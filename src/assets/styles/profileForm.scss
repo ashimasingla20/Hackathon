@@ -1,0 +1,45 @@
+.date{
+   
+    // color: red;
+    &__container {
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        &__label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 5px;
+            color: rgba(0,0,0, 0.3);
+        }
+    }
+    &__calender {
+        width: 100%!important;
+        // background: red;
+    }
+    
+}
+.audio{
+    &__screen{
+        margin-bottom: 15px;
+    }
+}
+#sound {
+    margin-top: 20px;
+    outline: 0;
+}
+#recorder {
+    display: none;
+}
+.profile {
+    &__about {
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid rgba(0,0,0,0.1);
+        background: #FFF;
+        color: rgba(0,0,0,0.5);
+        font-size: 16px;
+        border-radius: 5px;
+    }
+}
