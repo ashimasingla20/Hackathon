@@ -16,12 +16,12 @@ const ProfileCard = () => {
                     <button>Dislike</button>
                 </div> */}
                 <div class="extra content">
-                    <div class="ui two buttons">
+                    <div className="ui two buttons">
                         <div class="ui basic green button">
                             <Icon name="thumbs up outline"/>
                             Yes
                         </div>
-                        <div class="ui basic red button"> 
+                        <div className="ui basic red button"> 
                             <Icon name="thumbs down outline"/>No
                         </div>
                     </div>

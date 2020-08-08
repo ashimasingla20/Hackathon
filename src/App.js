@@ -18,7 +18,7 @@ function App() {
       <Router>
         <div className="App">
         <Switch>
-          <PrivateRoute exact path="/" component={FeedView} />
+          <PrivateRoute exact path="/profile" component={ProfileView} />
           <PrivateRoute exact path="/" component={FeedView} />
           <Route path="/login" component={LoginView} />
           <Route path="/register" component={RegisterView} />

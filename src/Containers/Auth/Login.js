@@ -9,14 +9,15 @@ import {
   Icon
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import {  PostApi, GetApi } from '../../ajaxHandler';
 class Login extends React.Component {
   state = {
-    email: "",
+    phoneNumber: "",
     password: "",
     errors: [],
     loading: false
   };
-  isFormValid = ({email, password}) => email && password;
+  isFormValid = ({phoneNumber, password}) => phoneNumber && password;
   displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
@@ -28,7 +29,35 @@ class Login extends React.Component {
     event.preventDefault();
     if(this.isFormValid(this.state)) {
       this.setState({errors: [], loading: true})
-      this.props.history.push('/');
+      console.log(this.state);
+      const {phoneNumber, password} = this.state;
+      let data = {
+        phoneNumber,
+        password
+      };
+      let {history} = this.props;
+      PostApi('secured/login',data, false)
+        .then((response) => {
+          console.log(response);
+          // handle success
+          localStorage.setItem("token", response);
+          return Promise.resolve(response.data);
+        })
+        .then (() => {
+          GetApi('authenticated/user/my-info', {}, true)
+            .then((myresponse) => {
+              console.log(myresponse);
+              if(myresponse.profileStatus === "COMPLETED") {
+                history.push("/");
+              } else {
+                history.push("/profile");
+              }
+            })
+        })
+        // .then((response) => {
+        //   console.log(response);
+        //   this.props.history.push('/');
+        // }
       // firebase
       //   .auth()
       //   .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -51,7 +80,7 @@ class Login extends React.Component {
   }
   render() {
     const {
-      email,
+      phoneNumber,
       password,
       errors,
       loading
@@ -68,14 +97,14 @@ class Login extends React.Component {
             <Segment stacked>
               <Form.Input
                 fluid
-                name="email"
-                icon="mail"
+                name="phoneNumber"
+                icon="phone"
                 iconPosition="left"
-                placeholder="Email Address"
+                placeholder="Phone Number"
                 onChange={this.handleChange}
-                value={email}
-                className={this.handleInputError(errors, 'email')}
-                type="email"
+                value={phoneNumber}
+                className={this.handleInputError(errors, 'phoneNumber')}
+                type="number"
               />
 
               <Form.Input

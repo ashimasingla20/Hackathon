@@ -14,13 +14,14 @@ const SetLocalStorageKey = (key, value) => {
     window.localStorage.setItem(key, JSON.stringify(value));
 }
 
-const SetLocalStorageObject = (dataObject) => {
-    if (Object.keys(dataObject).length) {
-        for (let object in dataObject) {
-            window.localStorage.setItem(object, JSON.stringify(dataObject[object]));
-        }
+const SetLocalStorageObject = (token) => {
+    // if (Object.keys(dataObject).length) {
+        // for (let object in dataObject) {
+        //     window.localStorage.setItem(object, JSON.stringify(dataObject[object]));
+        // }
+        window.localStorage.setItem("token", token);
 
-    }
+    // }
 }
 
 const saveCommonReducerToLocalStorage = (state) => {

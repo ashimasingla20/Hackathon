@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import {  PostApi } from '../../ajaxHandler';
+import { SetLocalStorageObject } from '../../localStorageService';
 
 class Register extends React.Component {
   state = {
@@ -82,50 +83,15 @@ class Register extends React.Component {
         phoneNumber,
         password
       }
-      PostApi('secured/sign-up',data)
-      //   .then((response) => {
-      //     console.log(response);
-      //     // handle success
-      //     return Promise.resolve(response.data);
-      //   })
-      //   .catch((error) => {
-      //     return Promise.reject(error.response)
-      //   })
-      //   .finally(function () {
-      //     // always executed
-      //   });
-    //   firebase
-    //     .auth()
-    //     .createUserWithEmailAndPassword(this.state.email, this.state.password)
-    //     .then(createdUser => {
-    //       console.log(createdUser);
-    //       createdUser.user
-    //         .updateProfile({
-    //           displayName: this.state.username,
-    //           photoURL: `http://gravatar.com/avatar/${md5(
-    //             createdUser.user.email
-    //           )}?d=identicon`
-    //         })
-    //         .then(() => {
-    //           this.saveUser(createdUser).then(() => {
-    //             console.log("user saved");
-    //           });
-    //         })
-    //         .catch(err => {
-    //           console.error(err);
-    //           this.setState({
-    //             errors: this.state.errors.concat(err),
-    //             loading: false
-    //           });
-    //         });
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //       this.setState({
-    //         errors: this.state.errors.concat(err),
-    //         loading: false
-    //       });
-    //     });
+      let {history} = this.props;
+      PostApi('secured/sign-up',data, false)
+        .then((response) => {
+          console.log(response);
+          // handle success
+          history.push("/");
+          SetLocalStorageObject(response);
+          return Promise.resolve(response.data);
+        })
     }
   };
 
